@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoLibrary", "01_NoLib\NoLib
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_NoLibrary", "01_NoLibrary", "{40968593-83D8-4722-B7A7-23DB67ACC62B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Livet", "02_Livet", "{BD19FA4D-64A1-4DA1-A723-0E456A43E198}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivetSample", "LivetSample\LivetSample.csproj", "{CE9447F6-8560-4699-9DF1-27E0513416C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{4E47F1DD-4F7F-4CBA-9608-328919C5C5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E47F1DD-4F7F-4CBA-9608-328919C5C5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E47F1DD-4F7F-4CBA-9608-328919C5C5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE9447F6-8560-4699-9DF1-27E0513416C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE9447F6-8560-4699-9DF1-27E0513416C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE9447F6-8560-4699-9DF1-27E0513416C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE9447F6-8560-4699-9DF1-27E0513416C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E47F1DD-4F7F-4CBA-9608-328919C5C5FE} = {40968593-83D8-4722-B7A7-23DB67ACC62B}
+		{CE9447F6-8560-4699-9DF1-27E0513416C7} = {BD19FA4D-64A1-4DA1-A723-0E456A43E198}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {80F76A8A-F563-487C-94D9-1D4C1FA612DC}
