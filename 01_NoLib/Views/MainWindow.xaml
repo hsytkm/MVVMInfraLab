@@ -16,14 +16,18 @@
     </Window.DataContext>
 
     <i:Interaction.Behaviors>
-        <vb:FileDropBehavior DroppedPath="{Binding InputPath, Mode=OneWayToSource}" />
+        <vb:FileDropBehavior DroppedPath="{Binding InputPath, Mode=TwoWay}" />
     </i:Interaction.Behaviors>
     
-    <Grid Margin="5" >
+    <StackPanel Margin="5" >
         <DockPanel>
             <TextBlock Text="DroppedPath: " />
             <TextBlock Text="{Binding InputPath, Mode=OneWay}" />
         </DockPanel>
 
-    </Grid>
+        <Button Height="30"
+                Content="Clear Path"
+                Command="{Binding Path=ClearPathCommand, Mode=OneTime}"/>
+
+    </StackPanel>
 </Window>

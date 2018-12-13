@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Input;
 
 namespace NoLibrary.ViewModels
 {
@@ -10,26 +6,27 @@ namespace NoLibrary.ViewModels
     {
         public string Title { get; } = "MVVM NoLibrary";
 
-        private string _InputPath;
+        private string _InputPath = @"C:\";
         public string InputPath
         {
             get => _InputPath;
             set => SetProperty(ref _InputPath, value);
         }
 
-        //private int _Width;
-        //public int Width
-        //{
-        //    get => _Width;
-        //    private set => SetProperty(ref _Width, value);
-        //}
-
-        //private int _Height;
-        //public int Height
-        //{
-        //    get => _Height;
-        //    private set => SetProperty(ref _Height, value);
-        //}
+        // 表示したPathを削除
+        private ICommand _ClearPathCommand;
+        public ICommand ClearPathCommand
+        {
+            get
+            {
+                return _ClearPathCommand
+                    ?? (_ClearPathCommand = new RelayCommand(
+                    () =>
+                    {
+                        InputPath = "";
+                    }));
+            }
+        }
 
         public MainWindowViewModel() { }
 
