@@ -7,6 +7,7 @@
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
         xmlns:v="clr-namespace:LivetSample.Views"
+        xmlns:vb="clr-namespace:LivetSample.Views.Behaviors"
         xmlns:vm="clr-namespace:LivetSample.ViewModels"
         mc:Ignorable="d"
         Title="LivetSample"
@@ -30,6 +31,10 @@
         <!--WindowのCloseキャンセル処理に対応する場合は、WindowCloseCancelBehaviorの使用を検討してください-->
     </i:Interaction.Triggers>
 
+    <i:Interaction.Behaviors>
+        <vb:FileDropBehavior DroppedPath="{Binding InputPath, Mode=OneWayToSource}" />
+    </i:Interaction.Behaviors>
+
     <StackPanel>
 
         <Button Height="30"
@@ -44,5 +49,11 @@
 
         <TextBlock Text="{Binding Counter, Mode=OneWay}" />
 
+        <TextBlock>
+            <Run Text="DroppedFileSize: " />
+            <Run Text="{Binding InputFileSize, Mode=OneWay}" />
+            <Run Text=" Byte" />
+        </TextBlock>
+        
     </StackPanel>
 </Window>

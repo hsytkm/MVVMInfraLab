@@ -10,16 +10,56 @@ namespace LivetSample.ViewModels
 
         public int Counter { get => SampleModel.ButtonCount; }
 
+        #region InputFile
+
+        private string _InputPath;
+        public string InputPath
+        {
+            get => _InputPath;
+            set
+            {
+                if (RaisePropertyChangedIfSet(ref _InputPath, value))
+                {
+                    SampleModel.SetFilepath(_InputPath);
+                }
+            }
+        }
+
+        public long _InputFileSize;
+        public long InputFileSize
+        {
+            get => _InputFileSize;
+            private set => RaisePropertyChangedIfSet(ref _InputFileSize, value);
+        }
+
+        #endregion
+
         public MainWindowViewModel()
         {
             CompositeDisposable.Add(SampleModel);
 
+            #region ModelEvent
+
             // Modelの変更通知を伝搬
-            var counterListener = new PropertyChangedEventListener(SampleModel)
+            var listener = new PropertyChangedEventListener(SampleModel)
             {
-                  () => SampleModel.ButtonCount, (_, __) => RaisePropertyChanged(nameof(Counter))
+                nameof(SampleModel.ButtonCount), (_, e) =>
+                {
+                    if (e.PropertyName == nameof(SampleModel.ButtonCount))
+                    {
+                        RaisePropertyChanged(nameof(Counter));
+                    }
+                },
+                nameof(SampleModel.FileSize), (_, e) =>
+                {
+                    if (e.PropertyName == nameof(SampleModel.FileSize))
+                    {
+                        InputFileSize = SampleModel.FileSize;
+                    }
+                },
             };
 
+            #endregion
         }
 
         public void Initialize() { }
