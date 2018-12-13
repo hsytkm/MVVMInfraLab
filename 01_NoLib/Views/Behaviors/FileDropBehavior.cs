@@ -5,15 +5,15 @@ namespace NoLibrary.Views.Behaviors
 {
     class FileDropBehavior : BehaviorBase<FrameworkElement>
     {
-        public string DroppedFilePath
+        public string DroppedPath
         {
-            get => (string)GetValue(DroppedFilePathProperty);
-            set => SetValue(DroppedFilePathProperty, value);
+            get => (string)GetValue(DroppedPathProperty);
+            set => SetValue(DroppedPathProperty, value);
         }
 
-        private static readonly DependencyProperty DroppedFilePathProperty =
+        private static readonly DependencyProperty DroppedPathProperty =
             DependencyProperty.Register(
-                nameof(DroppedFilePath),
+                nameof(DroppedPath),
                 typeof(string),
                 typeof(FileDropBehavior),
                 new PropertyMetadata(default(string)));
@@ -55,7 +55,7 @@ namespace NoLibrary.Views.Behaviors
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 var files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                DroppedFilePath = files.FirstOrDefault();
+                DroppedPath = files.FirstOrDefault();
             }
         }
 

@@ -9,18 +9,21 @@
         xmlns:vm="clr-namespace:NoLibrary.ViewModels"
         mc:Ignorable="d"
         Title="{Binding Title, Mode=OneTime}"
-        Height="300" Width="400">
+        Height="200" Width="400">
 
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
 
     <i:Interaction.Behaviors>
-        <vb:FileDropBehavior DroppedFilePath="{Binding FilePath, Mode=OneWayToSource}" />
+        <vb:FileDropBehavior DroppedPath="{Binding InputPath, Mode=OneWayToSource}" />
     </i:Interaction.Behaviors>
     
-    <Grid>
-        <TextBlock Text="{Binding FilePath, Mode=OneWay}" />
+    <Grid Margin="5" >
+        <DockPanel>
+            <TextBlock Text="DroppedPath: " />
+            <TextBlock Text="{Binding InputPath, Mode=OneWay}" />
+        </DockPanel>
 
     </Grid>
 </Window>

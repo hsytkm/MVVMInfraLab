@@ -10,11 +10,11 @@ namespace NoLibrary.ViewModels
     {
         public string Title { get; } = "MVVM NoLibrary";
 
-        private string _FilePath;
-        public string FilePath
+        private string _InputPath;
+        public string InputPath
         {
-            get => _FilePath;
-            set => SetProperty(ref _FilePath, value);
+            get => _InputPath;
+            set => SetProperty(ref _InputPath, value);
         }
 
         //private int _Width;
