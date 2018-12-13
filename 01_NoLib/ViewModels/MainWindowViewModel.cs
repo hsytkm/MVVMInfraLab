@@ -8,13 +8,13 @@ namespace NoLibrary.ViewModels
 {
     class MainWindowViewModel : BindableBase
     {
-        private static readonly string DefaultTitle = "MVVM NoLibrary";
-        
-        private string _Title = DefaultTitle;
-        public string Title
+        public string Title { get; } = "MVVM NoLibrary";
+
+        private string _FilePath;
+        public string FilePath
         {
-            get => _Title;
-            private set => SetProperty(ref _Title, value);
+            get => _FilePath;
+            set => SetProperty(ref _FilePath, value);
         }
 
         //private int _Width;

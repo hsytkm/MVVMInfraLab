@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:v="clr-namespace:NoLibrary.Views"
+        xmlns:vb="clr-namespace:NoLibrary.Views.Behaviors"
         xmlns:vm="clr-namespace:NoLibrary.ViewModels"
         mc:Ignorable="d"
         Title="{Binding Title, Mode=OneTime}"
@@ -13,8 +15,12 @@
         <vm:MainWindowViewModel />
     </Window.DataContext>
 
+    <i:Interaction.Behaviors>
+        <vb:FileDropBehavior DroppedFilePath="{Binding FilePath, Mode=OneWayToSource}" />
+    </i:Interaction.Behaviors>
+    
     <Grid>
+        <TextBlock Text="{Binding FilePath, Mode=OneWay}" />
 
-        
     </Grid>
 </Window>
