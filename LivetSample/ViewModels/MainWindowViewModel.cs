@@ -12,6 +12,8 @@ namespace LivetSample.ViewModels
 
         public MainWindowViewModel()
         {
+            CompositeDisposable.Add(SampleModel);
+
             // Modelの変更通知を伝搬
             var counterListener = new PropertyChangedEventListener(SampleModel)
             {
@@ -20,10 +22,11 @@ namespace LivetSample.ViewModels
 
         }
 
+        public void Initialize() { }
+
         // Viewからメソッドを直接Binding
-        public void ButtonCommand()
+        public void ButtonClickCommand()
         {
-            // Modelを書き換える
             SampleModel.IncrementButtonCount();
         }
     }

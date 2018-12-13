@@ -16,14 +16,28 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
 
+    <i:Interaction.Triggers>
+        <!--WindowのContentRenderedイベントのタイミングでViewModelのInitializeメソッドが呼ばれます-->
+        <i:EventTrigger EventName="ContentRendered">
+            <l:LivetCallMethodAction MethodTarget="{Binding}" MethodName="Initialize"/>
+        </i:EventTrigger>
+
+        <!--Windowが閉じたタイミングでViewModelのDisposeメソッドが呼ばれます-->
+        <i:EventTrigger EventName="Closed">
+            <l:DataContextDisposeAction/>
+        </i:EventTrigger>
+
+        <!--WindowのCloseキャンセル処理に対応する場合は、WindowCloseCancelBehaviorの使用を検討してください-->
+    </i:Interaction.Triggers>
+
     <StackPanel>
 
-        <Button Height="60"
+        <Button Height="30"
                 Content="カウンタ" >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click" >
                     <l:LivetCallMethodAction MethodTarget="{Binding}"
-                                             MethodName="ButtonCommand" />
+                                             MethodName="ButtonClickCommand" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Button>

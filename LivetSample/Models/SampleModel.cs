@@ -1,8 +1,10 @@
 ﻿using Livet;
+using System;
+using System.Diagnostics;
 
 namespace LivetSample.Models
 {
-    class SampleModel : NotificationObject
+    class SampleModel : NotificationObject, IDisposable
     {
         private int _ButtonCount;
         public int ButtonCount
@@ -18,5 +20,9 @@ namespace LivetSample.Models
             ButtonCount++;
         }
 
+        public void Dispose()
+        {
+            Debug.WriteLine("SampleModel.Dispose()");
+        }
     }
 }
