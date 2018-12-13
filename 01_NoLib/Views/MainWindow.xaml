@@ -25,6 +25,12 @@
             <TextBlock Text="{Binding InputPath, Mode=OneWay}" />
         </DockPanel>
 
+        <TextBlock>
+            <Run Text="FileSize: " />
+            <Run Text="{Binding InputFileSize, Mode=OneWay}" />
+            <Run Text=" Byte" />
+        </TextBlock>
+
         <Button Height="30"
                 Content="Clear Path"
                 Command="{Binding Path=ClearPathCommand, Mode=OneTime}"/>
