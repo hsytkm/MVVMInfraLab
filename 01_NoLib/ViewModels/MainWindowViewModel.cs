@@ -27,19 +27,11 @@ namespace NoLibrary.ViewModels
         #endregion
 
         // 表示したPathを削除
-        private ICommand _ClearPathCommand;
-        public ICommand ClearPathCommand
-        {
-            get
-            {
-                return _ClearPathCommand
-                    ?? (_ClearPathCommand = new RelayCommand(
-                    () =>
-                    {
-                        InputPath = "";
-                    }));
-            }
-        }
+        public RelayCommand ClearPathCommand =>
+            _ClearPathCommand ?? (_ClearPathCommand = new RelayCommand(
+            () => InputPath = "",
+            () => !string.IsNullOrWhiteSpace(InputPath)));
+        private RelayCommand _ClearPathCommand;
 
         public MainWindowViewModel()
         {
@@ -49,6 +41,7 @@ namespace NoLibrary.ViewModels
                     if (e.PropertyName == nameof(InputPath))
                     {
                         InputFileSize = !File.Exists(InputPath) ? 0 : new FileInfo(InputPath).Length;
+                        ClearPathCommand.RaiseCanExecuteChanged();
                     }
                 });
         }

@@ -3,29 +3,33 @@ using System.Windows.Input;
 
 namespace NoLibrary.ViewModels
 {
-    // http://running-cs.hatenablog.com/entry/2016/09/03/211015
     class RelayCommand : ICommand
     {
-        // Command実行時のアクション
-        // 引数を受け取りたい場合はこのActionをAction<object>などにする
-        private readonly Action action;
+        private readonly Action _execute;
+        private readonly Func<bool> _canExecute;
 
-        public RelayCommand(Action act)
+        public RelayCommand(Action execute, Func<bool> canExecute = null)
         {
-            action = act;
+            _execute = execute;
+            _canExecute = canExecute;
         }
 
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
-            return action != null;
+            if (_canExecute == null) return true;
+            return _canExecute();
         }
 
         public void Execute(object parameter)
         {
-            action?.Invoke();
+            _execute();
         }
 
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
