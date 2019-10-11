@@ -35,5 +35,6 @@
                 Content="Clear Path"
                 Command="{Binding Path=ClearPathCommand, Mode=OneTime}"/>
 
+        <ItemsControl ItemsSource="{Binding DateTimes, Mode=OneTime}" />
     </StackPanel>
 </Window>

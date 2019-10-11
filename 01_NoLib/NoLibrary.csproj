@@ -61,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\DateTimeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,12 +73,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\BindableBase.cs" />
+    <Compile Include="Models\ModelContext.cs" />
+    <Compile Include="Infrastructures\BindableBase.cs" />
+    <Compile Include="ViewModels\DateTimeControlViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\PropertyChangedEventListener.cs" />
-    <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Infrastructures\PropertyChangedEventListener.cs" />
+    <Compile Include="Infrastructures\RelayCommand.cs" />
     <Compile Include="Views\Behaviors\BehaviorBase.cs" />
     <Compile Include="Views\Behaviors\FileDropBehavior.cs" />
+    <Compile Include="Views\DateTimeControl.xaml.cs">
+      <DependentUpon>DateTimeControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -107,8 +116,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

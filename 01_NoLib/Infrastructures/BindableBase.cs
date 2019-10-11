@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace NoLibrary.ViewModels
+namespace NoLibrary.Infrastructures
 {
     // https://blog.okazuki.jp/entry/2015/05/09/124333
-    class BindableBase : INotifyPropertyChanged
+    public class BindableBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

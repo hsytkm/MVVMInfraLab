@@ -1,11 +1,16 @@
-﻿using System;
+﻿using NoLibrary.Infrastructures;
+using NoLibrary.Models;
+using NoLibrary.Views;
+using System;
+using System.Collections.ObjectModel;
 using System.IO;
-using System.Windows.Input;
 
 namespace NoLibrary.ViewModels
 {
     class MainWindowViewModel : BindableBase
     {
+        private ModelContext Model = App.Current.ModelContext;
+
         public string Title { get; } = "MVVM NoLibrary";
 
         #region Input
@@ -33,10 +38,12 @@ namespace NoLibrary.ViewModels
             () => !string.IsNullOrWhiteSpace(InputPath)));
         private RelayCommand _ClearPathCommand;
 
+        public ObservableCollection<DateTimeControl> DateTimes { get; } = new ObservableCollection<DateTimeControl>();
+
         public MainWindowViewModel()
         {
             // ◆Disposeに未対応
-            var listener = new PropertyChangedEventListener(this,
+            var selfListener = new PropertyChangedEventListener(this,
                 (_, e) => {
                     if (e.PropertyName == nameof(InputPath))
                     {
@@ -44,6 +51,19 @@ namespace NoLibrary.ViewModels
                         ClearPathCommand.RaiseCanExecuteChanged();
                     }
                 });
+
+            var dispatcher = App.Current.Dispatcher;
+
+            var modelListener = new PropertyChangedEventListener(Model,
+                (sender, e) => {
+                    if (e.PropertyName == nameof(ModelContext.DateTimeNow))
+                    {
+                        if (!(sender is ModelContext model)) return;
+
+                        dispatcher.Invoke(() => DateTimes.Add(new DateTimeControl(model.DateTimeNow)));
+                    }
+                });
+
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace NoLibrary.ViewModels
+namespace NoLibrary.Infrastructures
 {
     // https://qiita.com/nossey/items/7c415799bc6fda45f94e
     class PropertyChangedEventListener : IDisposable

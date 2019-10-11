@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using NoLibrary.Models;
+using System.Windows;
 
 namespace NoLibrary
 {
@@ -7,5 +8,8 @@ namespace NoLibrary
     /// </summary>
     public partial class App : Application
     {
+        public ModelContext ModelContext { get; } = new ModelContext();
+
+        public static new App Current => (App)Application.Current;
     }
 }
